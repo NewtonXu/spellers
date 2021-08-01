@@ -62,8 +62,10 @@ function updateSlots() {
 function decreaseSlot(name) {
 	var max_name = name.concat("cur");
 	var delta = parseInt(localStorage.getItem(max_name))-1;
-	document.getElementById(name.concat("_num")).innerHTML = delta;
-	localStorage.setItem(max_name, delta);
+	if(delta >= 0) {
+		document.getElementById(name.concat("_num")).innerHTML = delta;
+		localStorage.setItem(max_name, delta);
+	}
 }
 
 function increaseSlot(name) {
