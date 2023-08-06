@@ -220,6 +220,13 @@ class SigilManager {
     updateCommitTable() {
         document.getElementById("commitTable").innerHTML = this.commitedSequence;
     }
+
+    endTurn() {
+        this.currentSigilCost = 0;
+        this.sigilCounters = 0;
+        this.updateLocalStorage();
+        this.initialGraphic();
+    }
 }
 
 const dndJSON = JSON.parse(localStorage.getItem("dndJSON"));
@@ -253,6 +260,7 @@ generatedTable += `<tr>
 generatedTable += `<tr><td><button class="reset" id="hardreset">Hard Reset</button></td>
                        <td><button id="commit">Commit</button></td>
                        <td><button id="undoSequence">Rollback Last</button></td>
+                       <td><button id="endTurn">End Turn</button></td>
                    </tr>`
 generatedTable += "</table>";
 generatedTable += `<table id="commitTable"></table>`;
@@ -310,3 +318,7 @@ sequenceButton.addEventListener("click", (event) => {
     sigilManager.rollbackSequence();
 });
 
+var endTurnButton = document.getElementById("endTurn");
+endTurnButton.addEventListener("click", (event) => {
+    sigilManager.endTurn();
+})
