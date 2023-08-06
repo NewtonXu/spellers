@@ -1,11 +1,14 @@
-if(localStorage.getItem("dndJSON") === null) {
-  document.getElementById("test").value = `
+if (localStorage.getItem("dndJSON") === null) {
+    document.getElementById("test").value = `
   {
-    "spellLevel": 4,
-    "spellSlots": [4,3,3],
-    "sorcPoints": 5
-  }
-  `
+    "discipline": 12,
+    "sigils": [
+        ["Water", 80, 10, 3, 1],
+        ["Air", 80, 10, 3, 1],
+        ["Project", 40, 10, 2, 1],
+        ["Conjure", 60, 10, 4, 1]
+    ]
+  }`;
 } else {
   document.getElementById("test").value = localStorage.getItem("dndJSON");
 }
@@ -15,16 +18,9 @@ document.getElementById("test").addEventListener("change", (event) => {
 });
 
 document.getElementById("submit").addEventListener("click", (event) => {
-    console.log(document.getElementById("test").value);
-    localStorage.setItem("dndJSON", document.getElementById("test").value);
-    document.getElementById("test").style.setProperty("outline", "5px solid green")
+    document.getElementById("test").style.setProperty("outline", "1px solid red")
 
+    localStorage.setItem("dndJSON", document.getElementById("test").value);
     const dndJSON = JSON.parse(localStorage.getItem("dndJSON"));
-    var spellLevel = dndJSON['spellLevel'];
-    var spellSlots = dndJSON['spellSlots'];
-    for(var i = 1; i<= spellLevel; ++i){
-      localStorage.setItem("level"+i+"max", spellSlots[i-1]);
-    }
-    var sorcPoints = dndJSON['sorcPoints'];
-    localStorage.setItem("sorcPointsmax", sorcPoints);
+    document.getElementById("test").style.setProperty("outline", "5px solid green")
 });

@@ -1,6 +1,6 @@
 {
-	"name": "Spell slot tracker",
-	"description": "Simple counter to track spell slots and sorcerer points!",
+	"name": "Sigil tracker",
+	"description": "Simple counter to track sigils",
 	"version": "1.0",
 	"manifest_version": 3,
 	"background": {
